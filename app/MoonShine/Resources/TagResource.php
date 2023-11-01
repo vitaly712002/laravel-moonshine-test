@@ -3,29 +3,24 @@
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Article;
+use App\Models\Tag;
+
 use MoonShine\Resources\Resource;
 use MoonShine\Fields\ID;
 use MoonShine\Actions\FiltersAction;
-use MoonShine\Fields\BelongsTo;
-use MoonShine\Fields\BelongsToMany;
 use MoonShine\Fields\Text;
-use MoonShine\Fields\Textarea;
 
-class ArticleResource extends Resource
+class TagResource extends Resource
 {
-	public static string $model = Article::class;
+	public static string $model = Tag::class;
 
-	public static string $title = 'Статьи';
+	public static string $title = 'Tags';
 
 	public function fields(): array
 	{
 		return [
-            ID::make()->sortable(),
+		    ID::make()->sortable(),
             Text::make('title'),
-            Textarea::make('content'),
-            BelongsTo::make('Категория', 'categories', 'title'),
-            BelongsToMany::make('Теги', 'tags', 'title')
         ];
 	}
 
