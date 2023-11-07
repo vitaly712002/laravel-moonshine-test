@@ -12,6 +12,7 @@ use MoonShine\Resources\MoonShineUserResource;
 use MoonShine\Resources\MoonShineUserRoleResource;
 use App\MoonShine\Resources\PostResource;
 use App\MoonShine\Resources\TagResource;
+use App\MoonShine\Resources\CommentResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -40,6 +41,10 @@ class MoonShineServiceProvider extends ServiceProvider
             ]),
             MenuGroup::make('Теги',[
                 MenuItem::make('Теги', new TagResource())
+                    ->icon('heroicons.document-text')->badge(fn() => 12121)
+            ]),
+            MenuGroup::make('Комменты',[
+                MenuItem::make('Комменты', new CommentResource())
                     ->icon('heroicons.document-text')->badge(fn() => 12121)
             ])
         ]);

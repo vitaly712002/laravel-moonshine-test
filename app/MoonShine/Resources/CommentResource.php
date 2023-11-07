@@ -3,31 +3,24 @@
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Article;
+use App\Models\Comment;
+
 use MoonShine\Resources\Resource;
 use MoonShine\Fields\ID;
 use MoonShine\Actions\FiltersAction;
-use MoonShine\Fields\BelongsTo;
-use MoonShine\Fields\BelongsToMany;
-use MoonShine\Fields\HasOne;
 use MoonShine\Fields\Text;
-use MoonShine\Fields\Textarea;
 
-class ArticleResource extends Resource
+class CommentResource extends Resource
 {
-	public static string $model = Article::class;
+	public static string $model = Comment::class;
 
-	public static string $title = 'Статьи';
+	public static string $title = 'Комменты';
 
 	public function fields(): array
 	{
 		return [
-            ID::make()->sortable(),
-            Text::make('title'),
-            Textarea::make('content'),
-            BelongsTo::make('Категория', 'categories', 'title'),
-            BelongsToMany::make('Теги', 'tags', 'title'),
-            HasOne::make('Коммент', 'comment', 'text')
+		    ID::make()->sortable(),
+            Text::make('text'),
         ];
 	}
 
